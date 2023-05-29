@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -44,7 +46,18 @@ class LoginPage extends StatelessWidget {
                   TextButton(
                       onPressed: () {}, child: const Text('ลงทะเบียนใหม่')),
                   FilledButton(
-                      onPressed: () {}, child: const Text('เข้าสู่ระบบ'))
+                      onPressed: () {
+                        // 1.
+                        print('Hello World!!!!');
+
+                        // 2.
+                        // must import 'dart:developer';
+                        log('Hello World!!!!');
+
+                        // 3.
+                        debugPrint('Hello World!!!!');
+                      },
+                      child: const Text('เข้าสู่ระบบ'))
                 ],
               ),
             )

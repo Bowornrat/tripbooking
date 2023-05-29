@@ -8,16 +8,35 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Image.asset('assets/images/logo.jpg'),
+          Padding(
+            padding: const EdgeInsets.only(top: 100.0),
+            child: Image.asset(
+              'assets/images/logo.jpg',
+              width: 250,
+            ),
+          ),
           const Text('หมายเลขโทรศัพท์'),
-          TextField(),
-          const Text('รหัสผ่าน'),
-          TextField(),
-          Row(
-            children: [
-              TextButton(onPressed: () {}, child: const Text('ลงทะเบียนใหม่')),
-              FilledButton(onPressed: () {}, child: const Text('เข้าสู่ระบบ'))
-            ],
+          const Padding(
+            padding: EdgeInsets.only(left: 50.0, right: 50),
+            child: TextField(),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: const Text('รหัสผ่าน'),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 50.0, right: 50),
+            child: TextField(),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Row(
+              children: [
+                TextButton(
+                    onPressed: () {}, child: const Text('ลงทะเบียนใหม่')),
+                FilledButton(onPressed: () {}, child: const Text('เข้าสู่ระบบ'))
+              ],
+            ),
           )
         ],
       ),

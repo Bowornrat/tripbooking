@@ -7,21 +7,28 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 100.0),
-            child: Image.asset(
-              'assets/images/logo.jpg',
-              width: 250,
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 100.0),
+              child: Image.asset(
+                'assets/images/logo.jpg',
+                width: 250,
+              ),
             ),
           ),
-          const Text('หมายเลขโทรศัพท์'),
+          Padding(
+            padding: const EdgeInsets.only(left: 50.0),
+            child: const Text('หมายเลขโทรศัพท์'),
+          ),
           const Padding(
             padding: EdgeInsets.only(left: 50.0, right: 50),
             child: TextField(),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 16.0),
+            padding: const EdgeInsets.only(top: 16.0, left: 50),
             child: const Text('รหัสผ่าน'),
           ),
           const Padding(
@@ -31,6 +38,7 @@ class LoginPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
                     onPressed: () {}, child: const Text('ลงทะเบียนใหม่')),

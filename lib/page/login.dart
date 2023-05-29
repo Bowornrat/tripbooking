@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:tripbooking/page/register.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -57,10 +58,11 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   TextButton(
                       onPressed: () {
-                        setState(() {
-                          myText1 = 'register';
-                          log(myText1);
-                        });
+                        Navigator.pop(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const RegisterPage(),
+                            ));
                       },
                       child: const Text('ลงทะเบียนใหม่')),
                   FilledButton(

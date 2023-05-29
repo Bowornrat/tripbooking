@@ -56,22 +56,17 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
-                      onPressed: () {}, child: const Text('ลงทะเบียนใหม่')),
+                      onPressed: () {
+                        setState(() {
+                          myText1 = 'register';
+                          log(myText1);
+                        });
+                      },
+                      child: const Text('ลงทะเบียนใหม่')),
                   FilledButton(
                       onPressed: () {
-                        // // 1.
-                        // print('Hello World!!!!');
-
-                        // // 2.
-                        // // must import 'dart:developer';
-                        // log('Hello World!!!!');
-
-                        // // 3.
-                        // debugPrint('Hello World!!!!');
-
-                        // Render UI
                         setState(() {
-                          myText1 = 'Hellooooooooooooo!';
+                          myText1 = 'login';
                           log(myText1);
                         });
                       },
@@ -79,7 +74,16 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            Center(child: Text(myText1))
+            Center(
+
+                /// if (myText1 == 'login'){
+                ///   Text('เข้าสู่ระบบ');
+                /// } else{
+                ///   Text('ลงทะเบียน');
+                /// }
+                child: (myText1 == 'login')
+                    ? Text('เข้าสู่ระบบ')
+                    : Text('ลงทะเบียน'))
           ],
         ),
       ),

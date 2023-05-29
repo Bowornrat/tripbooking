@@ -8,7 +8,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Image.network('https://d1yjjnpx0p53s8.cloudfront.net/logo_173_0.jpg'),
+          Image.asset('assets/images/logo.jpg'),
           const Text('หมายเลขโทรศัพท์'),
           TextField(),
           const Text('รหัสผ่าน'),

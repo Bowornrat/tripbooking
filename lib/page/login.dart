@@ -96,12 +96,10 @@ class _LoginPageState extends State<LoginPage> {
                         var customer =
                             customerGetResponseFromJson(response.body);
                         //log(customer.records[0].fullname);
-
                         // 4. Check login to system
                         // If found data in database
                         // Open ShowTrip
                         // Else log('Phone or Password incorrect');
-
                         if (customer.records.length == 1) {
                           // Login correct
                           Navigator.push(
@@ -112,6 +110,9 @@ class _LoginPageState extends State<LoginPage> {
                         } else {
                           // Login incorrect
                           log('Phone or Password incorrect');
+                          setState(() {
+                            myText1 = 'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง';
+                          });
                         }
                       },
                       child: const Text('เข้าสู่ระบบ'))
@@ -125,9 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                 /// } else{
                 ///   Text('ลงทะเบียน');
                 /// }
-                child: (myText1 == 'login')
-                    ? Text('เข้าสู่ระบบ')
-                    : Text('ลงทะเบียน'))
+                child: Text(myText1))
           ],
         ),
       ),

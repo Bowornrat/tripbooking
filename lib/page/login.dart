@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:tripbooking/page/register.dart';
+import 'package:tripbooking/page/showTrip.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -14,6 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   // Attribute or Property
   // Global variable
   String myText1 = '';
+  String phone = '';
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +41,14 @@ class _LoginPageState extends State<LoginPage> {
               padding: EdgeInsets.only(left: 50.0),
               child: Text('หมายเลขโทรศัพท์'),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 50.0, right: 50),
-              child: TextField(),
+              child: TextField(
+                onChanged: (value) {
+                  // log(value);
+                  phone = value;
+                },
+              ),
             ),
             const Padding(
               padding: EdgeInsets.only(top: 16.0, left: 50),
@@ -67,10 +74,16 @@ class _LoginPageState extends State<LoginPage> {
                       child: const Text('ลงทะเบียนใหม่')),
                   FilledButton(
                       onPressed: () {
-                        setState(() {
-                          myText1 = 'login';
-                          log(myText1);
-                        });
+                        // setState(() {
+                        //   myText1 = 'login';
+                        //   log(myText1);
+                        // });
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => const ShowTripPage(),
+                        //     ));
+                        log(phone);
                       },
                       child: const Text('เข้าสู่ระบบ'))
                 ],

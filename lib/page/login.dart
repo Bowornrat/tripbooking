@@ -16,6 +16,8 @@ class _LoginPageState extends State<LoginPage> {
   // Global variable
   String myText1 = '';
   String phone = '';
+  var passwordCtl = TextEditingController();
+  // TextEditingController passwordCtl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +56,11 @@ class _LoginPageState extends State<LoginPage> {
               padding: EdgeInsets.only(top: 16.0, left: 50),
               child: Text('รหัสผ่าน'),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 50.0, right: 50),
-              child: TextField(),
+            Padding(
+              padding: const EdgeInsets.only(left: 50.0, right: 50),
+              child: TextField(
+                controller: passwordCtl,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
@@ -84,6 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                         //       builder: (context) => const ShowTripPage(),
                         //     ));
                         log(phone);
+                        log(passwordCtl.text);
                       },
                       child: const Text('เข้าสู่ระบบ'))
                 ],

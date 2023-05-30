@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:tripbooking/config.dart';
 import 'package:tripbooking/page/register.dart';
 import 'package:tripbooking/page/showTrip.dart';
 
@@ -78,14 +79,16 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: const Text('ลงทะเบียนใหม่')),
                   FilledButton(
-                      onPressed: () async {
-                        log('AAA');
-                        // ไม่รอให้เสร็จ
-                        // IO จะเป็น Async ทั้งหมด
-                        await testAsync().then((value) {
-                          log('DDD');
-                        });
-                        log('CCC');
+                      onPressed: () {
+                        log(apiEndpoint);
+
+                        // log('AAA');
+                        // // ไม่รอให้เสร็จ
+                        // // IO จะเป็น Async ทั้งหมด
+                        // await testAsync().then((value) {
+                        //   log('DDD');
+                        // });
+                        // log('CCC');
 
                         // setState(() {
                         //   myText1 = 'login';

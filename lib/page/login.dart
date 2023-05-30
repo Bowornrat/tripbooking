@@ -84,12 +84,19 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () async {
                         log(apiEndpoint);
                         //apiEndpoint = https://jupiter.csc.ku.ac.th/~fsebrs/api.php/records
-                        // Generate url
+                        // 1. Generate url
                         String url =
                             '$apiEndpoint/customer?filter=phone,eq,$phone&filter=password,eq,${passwordCtl.text}';
-                        // Call Api using http (Async)
+                        // 2. Call Api using http (Async)
                         var response = await http.get(Uri.parse(url));
                         log(response.body);
+
+                        // 3. Convert received data to "Model"
+
+                        // 4. Check login to system
+                        // If found data in database
+                        // Open ShowTrip
+                        // Else log('Phone or Password incorrect');
 
                         // Navigator.push(
                         //     context,

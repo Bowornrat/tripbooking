@@ -1,9 +1,11 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:tripbooking/config.dart';
 import 'package:tripbooking/page/register.dart';
 import 'package:tripbooking/page/showTrip.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -79,28 +81,21 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: const Text('ลงทะเบียนใหม่')),
                   FilledButton(
-                      onPressed: () {
+                      onPressed: () async {
                         log(apiEndpoint);
+                        //apiEndpoint = https://jupiter.csc.ku.ac.th/~fsebrs/api.php/records
+                        // Generate url
+                        String url =
+                            '$apiEndpoint/customer?filter=phone,eq,$phone&filter=password,eq,${passwordCtl.text}';
+                        // Call Api using http (Async)
+                        var response = await http.get(Uri.parse(url));
+                        log(response.body);
 
-                        // log('AAA');
-                        // // ไม่รอให้เสร็จ
-                        // // IO จะเป็น Async ทั้งหมด
-                        // await testAsync().then((value) {
-                        //   log('DDD');
-                        // });
-                        // log('CCC');
-
-                        // setState(() {
-                        //   myText1 = 'login';
-                        //   log(myText1);
-                        // });
                         // Navigator.push(
                         //     context,
                         //     MaterialPageRoute(
                         //       builder: (context) => const ShowTripPage(),
                         //     ));
-                        // log(phone);
-                        // log(passwordCtl.text);
                       },
                       child: const Text('เข้าสู่ระบบ'))
                 ],
@@ -126,5 +121,14 @@ class _LoginPageState extends State<LoginPage> {
   // Method for delay 3 sec and print BBB
   Future<void> testAsync() async {
     return Future.delayed(const Duration(seconds: 3), () => log('BBB'));
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }

@@ -59,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.only(left: 50.0, right: 50),
               child: TextField(
+                obscureText: true,
                 controller: passwordCtl,
               ),
             ),

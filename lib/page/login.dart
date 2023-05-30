@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:tripbooking/config.dart';
+import 'package:tripbooking/model/customer_get_res.dart';
 import 'package:tripbooking/page/register.dart';
 import 'package:tripbooking/page/showTrip.dart';
 import 'package:http/http.dart' as http;
@@ -92,6 +93,9 @@ class _LoginPageState extends State<LoginPage> {
                         log(response.body);
 
                         // 3. Convert received data to "Model"
+                        var customer =
+                            customerGetResponseFromJson(response.body);
+                        log(customer.records[0].fullname);
 
                         // 4. Check login to system
                         // If found data in database

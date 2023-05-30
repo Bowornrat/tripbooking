@@ -55,11 +55,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.all(16.0),
                 child: FilledButton(
                     onPressed: () {
-                      log(fullnameCtl.text);
+                      log('Fullname ${fullnameCtl.text}');
                       log(phoneCtl.text);
                       log(emailCtl.text);
                       log(passwordCtl.text);
                       log(confirmCtl.text);
+                      if (fullnameCtl.text.isEmpty ||
+                          phoneCtl.text.isEmpty ||
+                          emailCtl.text.isEmpty ||
+                          passwordCtl.text.isEmpty ||
+                          confirmCtl.text.isEmpty) {
+                        log('Fields cannot be empty');
+                      }
+                      if (passwordCtl.text != confirmCtl.text) {
+                        log('รหัสผ่านไม่ตรงกัน');
+                      }
                     },
                     child: const Text('สมัครสมาชิก')),
               )),

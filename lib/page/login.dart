@@ -78,7 +78,15 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: const Text('ลงทะเบียนใหม่')),
                   FilledButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        log('AAA');
+                        // ไม่รอให้เสร็จ
+                        // IO จะเป็น Async ทั้งหมด
+                        await testAsync().then((value) {
+                          log('DDD');
+                        });
+                        log('CCC');
+
                         // setState(() {
                         //   myText1 = 'login';
                         //   log(myText1);
@@ -88,8 +96,8 @@ class _LoginPageState extends State<LoginPage> {
                         //     MaterialPageRoute(
                         //       builder: (context) => const ShowTripPage(),
                         //     ));
-                        log(phone);
-                        log(passwordCtl.text);
+                        // log(phone);
+                        // log(passwordCtl.text);
                       },
                       child: const Text('เข้าสู่ระบบ'))
                 ],
@@ -110,5 +118,10 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
     ;
+  }
+
+  // Method for delay 3 sec and print BBB
+  Future<void> testAsync() async {
+    return Future.delayed(const Duration(seconds: 3), () => log('BBB'));
   }
 }

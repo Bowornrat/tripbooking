@@ -95,18 +95,24 @@ class _LoginPageState extends State<LoginPage> {
                         // 3. Convert received data to "Model"
                         var customer =
                             customerGetResponseFromJson(response.body);
-                        log(customer.records[0].fullname);
+                        //log(customer.records[0].fullname);
 
                         // 4. Check login to system
                         // If found data in database
                         // Open ShowTrip
                         // Else log('Phone or Password incorrect');
 
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => const ShowTripPage(),
-                        //     ));
+                        if (customer.records.length == 1) {
+                          // Login correct
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ShowTripPage(),
+                              ));
+                        } else {
+                          // Login incorrect
+                          log('Phone or Password incorrect');
+                        }
                       },
                       child: const Text('เข้าสู่ระบบ'))
                 ],

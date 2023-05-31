@@ -11,7 +11,6 @@ String customerPostRequestToJson(CustomerPostRequest data) =>
     json.encode(data.toJson());
 
 class CustomerPostRequest {
-  int idx;
   String fullname;
   String phone;
   String email;
@@ -19,7 +18,6 @@ class CustomerPostRequest {
   String password;
 
   CustomerPostRequest({
-    required this.idx,
     required this.fullname,
     required this.phone,
     required this.email,
@@ -29,7 +27,6 @@ class CustomerPostRequest {
 
   factory CustomerPostRequest.fromJson(Map<String, dynamic> json) =>
       CustomerPostRequest(
-        idx: json["idx"],
         fullname: json["fullname"],
         phone: json["phone"],
         email: json["email"],
@@ -38,7 +35,6 @@ class CustomerPostRequest {
       );
 
   Map<String, dynamic> toJson() => {
-        "idx": idx,
         "fullname": fullname,
         "phone": phone,
         "email": email,

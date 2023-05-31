@@ -33,7 +33,9 @@ class _ShowTripPageState extends State<ShowTripPage> {
       // 4. Convert JSON to Model
       trips = tripGetResponseFromJson(value.body);
       log(trips.records.length.toString());
-      isLoaded = true;
+      setState(() {
+        isLoaded = true;
+      });
     }).onError((error, stackTrace) {
       // Error
       log(error.toString());

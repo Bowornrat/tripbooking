@@ -51,9 +51,25 @@ class _ShowTripPageState extends State<ShowTripPage> {
         title: Text('รายการทริป'),
       ),
       body: Container(
-        child: (isLoaded == true)
-            ? Text(trips.records.length.toString())
-            : Container(),
+        child: (isLoaded == false)
+            ? Container()
+            : SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Card(
+                    child: Column(
+                  children: [
+                    Text(trips.records[0].name),
+                    Row(
+                      children: [
+                        Image.network(trips.records[0].coverimage),
+                        Column(
+                          children: [Text(trips.records[0].country)],
+                        )
+                      ],
+                    )
+                  ],
+                )),
+              ),
       ),
     );
   }

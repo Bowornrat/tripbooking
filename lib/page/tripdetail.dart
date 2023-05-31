@@ -15,6 +15,9 @@ class TripDetailPage extends StatefulWidget {
 }
 
 class _TripDetailPageState extends State<TripDetailPage> {
+  // Global variable
+  late TripGetResponse trip;
+
   @override
   Widget build(BuildContext context) {
     log(widget.idx.toString());
@@ -35,6 +38,6 @@ class _TripDetailPageState extends State<TripDetailPage> {
     var response = await http.get(Uri.parse(url));
 
     // 3. Convert JSON to model
-    var trip = tripGetResponseFromJson(response.body);
+    trip = tripGetResponseFromJson(response.body);
   }
 }

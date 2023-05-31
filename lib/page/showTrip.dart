@@ -53,18 +53,25 @@ class _ShowTripPageState extends State<ShowTripPage> {
       body: Column(
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('ปลายทาง'),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    FilledButton(onPressed: () {}, child: Text('ทั้งหมด')),
-                    FilledButton(onPressed: () {}, child: Text('เอเชีย')),
-                    FilledButton(onPressed: () {}, child: Text('ยุโรป')),
-                    FilledButton(onPressed: () {}, child: Text('อาเซียน')),
-                    FilledButton(onPressed: () {}, child: Text('ไทย')),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text('ปลายทาง'),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      FilledButton(onPressed: () {}, child: Text('ทั้งหมด')),
+                      FilledButton(onPressed: () {}, child: Text('เอเชีย')),
+                      FilledButton(onPressed: () {}, child: Text('ยุโรป')),
+                      FilledButton(onPressed: () {}, child: Text('อาเซียน')),
+                      FilledButton(onPressed: () {}, child: Text('ไทย')),
+                    ],
+                  ),
                 ),
               )
             ],

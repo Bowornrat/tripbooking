@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:tripbooking/config.dart';
 import 'package:http/http.dart' as http;
+import 'package:tripbooking/model/trip_get_res.dart';
 
 class ShowTripPage extends StatefulWidget {
   const ShowTripPage({super.key});
@@ -12,6 +13,9 @@ class ShowTripPage extends StatefulWidget {
 }
 
 class _ShowTripPageState extends State<ShowTripPage> {
+  // Global variables
+  late TripGetResponse trips;
+  bool isLoaded = false;
   // InitState cannot be async
   @override
   void initState() {
@@ -24,7 +28,12 @@ class _ShowTripPageState extends State<ShowTripPage> {
     // 3. Call Api
     http.get(Uri.parse(url)).then((value) {
       // Success
-      log(value.body);
+      // log(value.body);
+
+      // 4. Convert JSON to Model
+      trips = tripGetResponseFromJson(value.body);
+      log(trips.records.length.toString());
+      isLoaded = true;
     }).onError((error, stackTrace) {
       // Error
       log(error.toString());
@@ -37,7 +46,11 @@ class _ShowTripPageState extends State<ShowTripPage> {
       appBar: AppBar(
         title: Text('รายการทริป'),
       ),
-      body: Container(),
+      body: Container(
+        child: (isLoaded == true)
+            ? Text(trips.records.length.toString())
+            : Container(),
+      ),
     );
   }
 }

@@ -55,31 +55,57 @@ class _ShowTripPageState extends State<ShowTripPage> {
             ? Container()
             : SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: 200,
-                child: Card(
-                    child: Column(
-                  children: [
-                    Text(trips.records[0].name),
-                    Row(
-                      children: [
-                        Image.network(
-                          trips.records[0].coverimage,
-                          width: 200,
-                        ),
-                        Column(
-                          children: [
-                            Text('ประเทศ${trips.records[0].country}'),
-                            Text('ระยะเวลา ${trips.records[0].duration} วัน'),
-                            Text('ราคา ${trips.records[0].price} บาท'),
-                            FilledButton(
-                                onPressed: () {},
-                                child: Text('รายละเอียดเพิ่มเติม'))
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                )),
+                height: 230,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                      child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(trips.records[0].name),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child:
+                                // ImageNetwork(
+                                //   image: trips.records[0].coverimage,
+                                //   width: 200,
+                                //   height: 150,
+                                // )
+                                Image.network(
+                              trips.records[0].coverimage,
+                              width: 200,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('ประเทศ${trips.records[0].country}'),
+                                Text(
+                                    'ระยะเวลา ${trips.records[0].duration} วัน'),
+                                Text('ราคา ${trips.records[0].price} บาท'),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: FilledButton(
+                                      onPressed: () {},
+                                      child: Text('รายละเอียด')),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  )),
+                ),
               ),
       ),
     );

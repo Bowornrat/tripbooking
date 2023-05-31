@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:tripbooking/config.dart';
 import 'package:tripbooking/model/customer_post_req.dart';
+import 'package:http/http.dart' as http;
+import 'package:tripbooking/page/login.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -56,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: FilledButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (fullnameCtl.text.isEmpty ||
                           phoneCtl.text.isEmpty ||
                           emailCtl.text.isEmpty ||
@@ -82,7 +84,22 @@ class _RegisterPageState extends State<RegisterPage> {
                           email: emailCtl.text,
                           image: '',
                           password: passwordCtl.text);
-                      var customerJson = customerPostRequestToJson(customer);
+                      // Json String
+                      String customerJson = customerPostRequestToJson(customer);
+
+                      // 3. POST Send (Request) to api
+                      var response =
+                          await http.post(Uri.parse(url), body: customerJson);
+
+                      // 4. Receive data from request
+                      log(response.body);
+
+                      // 5. Redirect to Login Page
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginPage(),
+                          ));
                     },
                     child: const Text('สมัครสมาชิก')),
               )),

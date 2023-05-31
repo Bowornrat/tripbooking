@@ -57,11 +57,7 @@ class _ShowTripPageState extends State<ShowTripPage> {
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child:
-                        // Loop display cards
-                        ListView(
-                      // Loop ช้อมูลทุกตัวใน records โดย
-                      // แต่ละรอบ ให้เอาข้อมูล มาใส่ในตัวแปร e
+                    child: ListView(
                       children: trips.records.map((e) {
                         return Card(
                             child: Column(

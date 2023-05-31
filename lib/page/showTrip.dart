@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripbooking/config.dart';
 
 class ShowTripPage extends StatefulWidget {
   const ShowTripPage({super.key});
@@ -8,6 +9,15 @@ class ShowTripPage extends StatefulWidget {
 }
 
 class _ShowTripPageState extends State<ShowTripPage> {
+  @override
+  void initState() {
+    super.initState();
+    // 1. Generate URL
+    var url = '$apiEndpoint/trip';
+
+    // 2. Create Model for trips
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

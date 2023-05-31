@@ -107,7 +107,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text('มีบัญชีอยู่แล้ว ?'),
-                  TextButton(onPressed: () {}, child: const Text('เข้าสู่ระบบ'))
+                  TextButton(
+                      onPressed: () {
+                        String? x; // default = null
+                        late String s;
+                        s = 'aaaaa';
+
+                        // String != String?
+
+                        log(s);
+                      },
+                      child: const Text('เข้าสู่ระบบ'))
                 ],
               )
             ],

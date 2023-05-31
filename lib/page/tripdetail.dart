@@ -25,7 +25,18 @@ class _TripDetailPageState extends State<TripDetailPage> {
       appBar: AppBar(
         title: Text('ข้อมูลทริป'),
       ),
-      body: Container(),
+      body: FutureBuilder(
+          future: loadDataAsync(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState != ConnectionState.done) {
+              return Container(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return Column(
+              children: [Image.network(trip.records[0].coverimage)],
+            );
+          }),
     );
   }
 

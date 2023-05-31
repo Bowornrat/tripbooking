@@ -171,7 +171,9 @@ class _ShowTripPageState extends State<ShowTripPage> {
                                                         context,
                                                         MaterialPageRoute(
                                                           builder: (context) =>
-                                                              TripDetailPage(),
+                                                              TripDetailPage(
+                                                            idx: e.idx,
+                                                          ),
                                                         ));
                                                   },
                                                   child: Text('รายละเอียด')),

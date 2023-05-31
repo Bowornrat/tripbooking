@@ -52,17 +52,23 @@ class _ShowTripPageState extends State<ShowTripPage> {
       ),
       body: Column(
         children: [
+          // แสดงปุ่มปลายทาง
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 16.0),
+              // ข้อความว่า ปลายทาง
+              const Padding(
+                padding: EdgeInsets.only(left: 16.0),
                 child: Text('ปลายทาง'),
               ),
+              // ปุ่ม ปลายทาง หลายๆปุ่ม
               Padding(
                 padding: const EdgeInsets.all(8.0),
+                // ปุ่มหลายปุ่มจะล้นจอ เลยต้องใส่ SingleChildScrollView
+                // โดยให้เลื่อนได้ทางแนวนอน scrollDirection: Axis.horizontal,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
+                  // ปุ่มปลายทางหลายๆปุ่ม
                   child: Row(
                     children: [
                       FilledButton(onPressed: () {}, child: Text('ทั้งหมด')),
@@ -76,6 +82,7 @@ class _ShowTripPageState extends State<ShowTripPage> {
               )
             ],
           ),
+          // แสดงข้อมูลทริปที่ loop
           Expanded(
             child: Container(
               child: (isLoaded == false)

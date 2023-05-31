@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tripbooking/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:tripbooking/model/trip_get_res.dart';
+import 'package:tripbooking/page/tripdetail.dart';
 
 class ShowTripPage extends StatefulWidget {
   const ShowTripPage({super.key});
@@ -165,7 +166,14 @@ class _ShowTripPageState extends State<ShowTripPage> {
                                               padding: const EdgeInsets.only(
                                                   top: 8.0),
                                               child: FilledButton(
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              TripDetailPage(),
+                                                        ));
+                                                  },
                                                   child: Text('รายละเอียด')),
                                             )
                                           ],
@@ -186,6 +194,9 @@ class _ShowTripPageState extends State<ShowTripPage> {
   }
 
   void getTrip(int destinationid) {
+    setState(() {
+      isLoaded = false;
+    });
     // 1. Generate URL
     var url = '$apiEndpoint/trip?filter=destinationid,eq,$destinationid';
 

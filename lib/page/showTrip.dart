@@ -55,6 +55,7 @@ class _ShowTripPageState extends State<ShowTripPage> {
             ? Container()
             : SizedBox(
                 width: MediaQuery.of(context).size.width,
+                height: 200,
                 child: Card(
                     child: Column(
                   children: [

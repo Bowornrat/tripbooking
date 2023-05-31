@@ -61,9 +61,19 @@ class _ShowTripPageState extends State<ShowTripPage> {
                     Text(trips.records[0].name),
                     Row(
                       children: [
-                        Image.network(trips.records[0].coverimage),
+                        Image.network(
+                          trips.records[0].coverimage,
+                          width: 200,
+                        ),
                         Column(
-                          children: [Text(trips.records[0].country)],
+                          children: [
+                            Text('ประเทศ${trips.records[0].country}'),
+                            Text('ระยะเวลา ${trips.records[0].duration} วัน'),
+                            Text('ราคา ${trips.records[0].price} บาท'),
+                            FilledButton(
+                                onPressed: () {},
+                                child: Text('รายละเอียดเพิ่มเติม'))
+                          ],
                         )
                       ],
                     )

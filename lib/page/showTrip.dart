@@ -71,11 +71,42 @@ class _ShowTripPageState extends State<ShowTripPage> {
                   // ปุ่มปลายทางหลายๆปุ่ม
                   child: Row(
                     children: [
-                      FilledButton(onPressed: () {}, child: Text('ทั้งหมด')),
-                      FilledButton(onPressed: () {}, child: Text('เอเชีย')),
-                      FilledButton(onPressed: () {}, child: Text('ยุโรป')),
-                      FilledButton(onPressed: () {}, child: Text('อาเซียน')),
-                      FilledButton(onPressed: () {}, child: Text('ไทย')),
+                      FilledButton(
+                          onPressed: () {
+                            // 1. Generate URL
+                            var url = '$apiEndpoint/trip';
+
+                            // 2. Create Model for trips
+
+                            // 3. Call Api
+                            http.get(Uri.parse(url)).then((value) {
+                              // Success
+                              // log(value.body);
+
+                              // 4. Convert JSON to Model
+                              trips = tripGetResponseFromJson(value.body);
+                              log(trips.records.length.toString());
+
+                              // 5. set isLoaded and re-render UI
+                              setState(() {
+                                isLoaded = true;
+                              });
+                            }).onError((error, stackTrace) {
+                              // Error
+                              log(error.toString());
+                            });
+                          },
+                          child: Text('ทั้งหมด')),
+
+                      // ปุ่ม เอเชีย
+                      FilledButton(
+                          onPressed: () => getTrip(1), child: Text('เอเชีย')),
+                      FilledButton(
+                          onPressed: () => getTrip(2), child: Text('ยุโรป')),
+                      FilledButton(
+                          onPressed: () => getTrip(3), child: Text('อาเซียน')),
+                      FilledButton(
+                          onPressed: () => getTrip(9), child: Text('ไทย')),
                     ],
                   ),
                 ),
@@ -201,5 +232,30 @@ class _ShowTripPageState extends State<ShowTripPage> {
         ],
       ),
     );
+  }
+
+  void getTrip(int destinationid) {
+    // 1. Generate URL
+    var url = '$apiEndpoint/trip?filter=destinationid,eq,$destinationid';
+
+    // 2. Create Model for trips
+
+    // 3. Call Api
+    http.get(Uri.parse(url)).then((value) {
+      // Success
+      // log(value.body);
+
+      // 4. Convert JSON to Model
+      trips = tripGetResponseFromJson(value.body);
+      log(trips.records.length.toString());
+
+      // 5. set isLoaded and re-render UI
+      setState(() {
+        isLoaded = true;
+      });
+    }).onError((error, stackTrace) {
+      // Error
+      log(error.toString());
+    });
   }
 }

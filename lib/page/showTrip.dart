@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'package:tripbooking/config.dart';
 import 'package:http/http.dart' as http;
@@ -50,6 +51,7 @@ class _ShowTripPageState extends State<ShowTripPage> {
 
   @override
   Widget build(BuildContext context) {
+    GetStorage gs = GetStorage();
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -57,8 +59,8 @@ class _ShowTripPageState extends State<ShowTripPage> {
           child: Column(
             children: [
               Image.asset('assets/images/logo.jpg'),
-              const Text('อาจารย์เอ็ม'),
-              const Text('0817399999'),
+              Text(gs.read('fullname')),
+              Text(gs.read('phone')),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

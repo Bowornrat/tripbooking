@@ -2,11 +2,20 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:tripbooking/page/login.dart';
+import 'package:tripbooking/provider/appdata.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => AppData(),
+      )
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

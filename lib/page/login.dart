@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
@@ -78,65 +79,74 @@ class _LoginPageState extends State<LoginPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextButton(
-                      onPressed: () {
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RegisterPage(),
+                          ));
+                    },
+                    label: const Text('ลงทะเบียนใหม่'),
+                    icon: FaIcon(
+                      FontAwesomeIcons.tableList,
+                      size: 18,
+                    ),
+                  ),
+                  FilledButton.icon(
+                    onPressed: () async {
+                      SmartDialog.showLoading();
+                      log(apiEndpoint);
+                      //apiEndpoint = https://jupiter.csc.ku.ac.th/~fsebrs/api.php/records
+                      // 1. Generate url
+                      String url =
+                          '$apiEndpoint/customer?filter=phone,eq,$phone&filter=password,eq,${passwordCtl.text}';
+                      // 2. Call Api using http (Async)
+                      var response = await http.get(Uri.parse(url));
+                      log(response.body);
+
+                      // 3. Convert received data to "Model"
+                      var customer = customerGetResponseFromJson(response.body);
+                      //log(customer.records[0].fullname);
+                      // 4. Check login to system
+                      // If found data in database
+                      // Open ShowTrip
+                      // Else log('Phone or Password incorrect');
+                      if (customer.records.length == 1) {
+                        // Login correct
+
+                        // เก็บข้อมูลลง Storage
+                        GetStorage gs = GetStorage();
+                        gs.write('fullname', customer.records[0].fullname);
+                        gs.write('phone', customer.records[0].phone);
+                        gs.write('image', customer.records[0].image);
+
+                        // เก็บข้อมูล customer ทั้งก้อนลง Provider
+                        context.read<AppData>().customer = customer;
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const RegisterPage(),
+                              builder: (context) => const ShowTripPage(),
                             ));
-                      },
-                      child: const Text('ลงทะเบียนใหม่')),
-                  FilledButton(
-                      onPressed: () async {
-                        SmartDialog.showLoading();
-                        log(apiEndpoint);
-                        //apiEndpoint = https://jupiter.csc.ku.ac.th/~fsebrs/api.php/records
-                        // 1. Generate url
-                        String url =
-                            '$apiEndpoint/customer?filter=phone,eq,$phone&filter=password,eq,${passwordCtl.text}';
-                        // 2. Call Api using http (Async)
-                        var response = await http.get(Uri.parse(url));
-                        log(response.body);
-
-                        // 3. Convert received data to "Model"
-                        var customer =
-                            customerGetResponseFromJson(response.body);
-                        //log(customer.records[0].fullname);
-                        // 4. Check login to system
-                        // If found data in database
-                        // Open ShowTrip
-                        // Else log('Phone or Password incorrect');
-                        if (customer.records.length == 1) {
-                          // Login correct
-
-                          // เก็บข้อมูลลง Storage
-                          GetStorage gs = GetStorage();
-                          gs.write('fullname', customer.records[0].fullname);
-                          gs.write('phone', customer.records[0].phone);
-                          gs.write('image', customer.records[0].image);
-
-                          // เก็บข้อมูล customer ทั้งก้อนลง Provider
-                          context.read<AppData>().customer = customer;
-
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const ShowTripPage(),
-                              ));
-                        } else {
-                          // Login incorrect
-                          log('Phone or Password incorrect');
-                          setState(() {
-                            myText1 = 'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง';
-                          });
-                          Get.snackbar('เกิดข้อผิดพลาด',
-                              'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง');
-                        }
-                        // await Future.delayed(Duration(seconds: 5));
-                        SmartDialog.dismiss();
-                      },
-                      child: const Text('เข้าสู่ระบบ'))
+                      } else {
+                        // Login incorrect
+                        log('Phone or Password incorrect');
+                        setState(() {
+                          myText1 = 'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง';
+                        });
+                        Get.snackbar('เกิดข้อผิดพลาด',
+                            'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง');
+                      }
+                      // await Future.delayed(Duration(seconds: 5));
+                      SmartDialog.dismiss();
+                    },
+                    label: const Text('เข้าสู่ระบบ'),
+                    icon: FaIcon(
+                      FontAwesomeIcons.rightFromBracket,
+                      size: 18,
+                    ),
+                  )
                 ],
               ),
             ),

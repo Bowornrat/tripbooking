@@ -43,6 +43,8 @@ dependencies:
   flutter_smart_dialog: ^4.9.0+6
   font_awesome_flutter: ^10.4.0
   image_picker: ^0.8.7+5 
+  google_maps: ^6.3.0
+  google_maps_flutter: ^2.2.8
   # image_network: ^1.0.0
 
 dev_dependencies:

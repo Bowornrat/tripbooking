@@ -4,6 +4,8 @@
         android:label="tripbooking"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyAi-Er9_qnVPx4G7td_z7pRUKuGHv8Swv0"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

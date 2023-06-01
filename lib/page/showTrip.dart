@@ -112,7 +112,7 @@ class _ShowTripPageState extends State<ShowTripPage> {
             IconButton(
                 onPressed: () async {
                   final ImagePicker picker = ImagePicker();
-                  var photot =
+                  var photo =
                       await picker.pickImage(source: ImageSource.camera);
                 },
                 icon: FaIcon(FontAwesomeIcons.cameraRetro))

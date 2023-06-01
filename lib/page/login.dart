@@ -9,6 +9,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:tripbooking/config.dart';
 import 'package:tripbooking/model/customer_get_res.dart';
+import 'package:tripbooking/page/maps.dart';
 import 'package:tripbooking/page/register.dart';
 import 'package:tripbooking/page/showTrip.dart';
 import 'package:http/http.dart' as http;
@@ -169,6 +170,12 @@ class _LoginPageState extends State<LoginPage> {
                 ///   Text('ลงทะเบียน');
                 /// }
                 child: Text(myText1)),
+            Center(
+                child: ElevatedButton(
+                    onPressed: () {
+                      Get.to(() => MapPage());
+                    },
+                    child: Text('แผนที่')))
           ],
         ),
       ),

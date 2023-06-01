@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           textTheme:
               GoogleFonts.notoSansThaiTextTheme(Theme.of(context).textTheme),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-          useMaterial3: false,
+          useMaterial3: true,
         ),
         navigatorObservers: [FlutterSmartDialog.observer],
         builder: FlutterSmartDialog.init(),

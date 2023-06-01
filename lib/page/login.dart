@@ -108,6 +108,8 @@ class _LoginPageState extends State<LoginPage> {
                           GetStorage gs = GetStorage();
                           gs.write('fullname', customer.records[0].fullname);
                           gs.write('phone', customer.records[0].phone);
+                          gs.write('image', customer.records[0].image);
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(

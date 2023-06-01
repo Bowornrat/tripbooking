@@ -58,7 +58,7 @@ class _ShowTripPageState extends State<ShowTripPage> {
         drawer: Drawer(
           child: Column(
             children: [
-              Image.asset('assets/images/logo.jpg'),
+              Image.network(gs.read('image')),
               Text(gs.read('fullname')),
               Text(gs.read('phone')),
               const Row(

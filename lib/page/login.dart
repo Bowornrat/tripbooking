@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
@@ -88,6 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: const Text('ลงทะเบียนใหม่')),
                   FilledButton(
                       onPressed: () async {
+                        SmartDialog.showLoading();
                         log(apiEndpoint);
                         //apiEndpoint = https://jupiter.csc.ku.ac.th/~fsebrs/api.php/records
                         // 1. Generate url
@@ -131,6 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                           Get.snackbar('เกิดข้อผิดพลาด',
                               'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง');
                         }
+                        SmartDialog.dismiss();
                       },
                       child: const Text('เข้าสู่ระบบ'))
                 ],

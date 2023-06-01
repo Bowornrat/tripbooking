@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tripbooking/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:tripbooking/model/trip_get_res.dart';
+import 'package:tripbooking/page/login.dart';
 import 'package:tripbooking/page/tripdetail.dart';
 
 class ShowTripPage extends StatefulWidget {
@@ -64,6 +65,21 @@ class _ShowTripPageState extends State<ShowTripPage> {
               ),
               const ListTile(
                 title: Text('รายการทริป'),
+              ),
+              const Divider(),
+              const ListTile(
+                title: Text('รายการจอง'),
+              ),
+              const Divider(),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginPage(),
+                      ));
+                },
+                title: Text('ออกจากระบบ'),
               ),
               const Divider()
             ],

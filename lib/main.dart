@@ -8,6 +8,7 @@ import 'package:tripbooking/provider/appdata.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
+  // ให้ App เราสามารถเข้าถึง Provider ได้
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(

@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:tripbooking/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:tripbooking/model/trip_get_res.dart';
@@ -63,7 +65,10 @@ class _ShowTripPageState extends State<ShowTripPage> {
                   Text('เมนูหลัก'),
                 ],
               ),
-              const ListTile(
+              ListTile(
+                onTap: () {
+                  Get.back();
+                },
                 title: Text('รายการทริป'),
               ),
               const Divider(),
@@ -73,11 +78,13 @@ class _ShowTripPageState extends State<ShowTripPage> {
               const Divider(),
               ListTile(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginPage(),
-                      ));
+                  Get.to(() => LoginPage());
+
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => LoginPage(),
+                  //     ));
                 },
                 title: Text('ออกจากระบบ'),
               ),

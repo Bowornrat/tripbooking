@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -26,6 +27,8 @@ class _ShowTripPageState extends State<ShowTripPage> {
   // Global variables
   late TripGetResponse trips;
   bool isLoaded = false;
+  XFile? photo;
+
   // InitState cannot be async
   @override
   void initState() {
@@ -112,8 +115,9 @@ class _ShowTripPageState extends State<ShowTripPage> {
             IconButton(
                 onPressed: () async {
                   final ImagePicker picker = ImagePicker();
-                  var photo =
-                      await picker.pickImage(source: ImageSource.camera);
+                  // Global var photo
+                  photo = await picker.pickImage(source: ImageSource.camera);
+                  setState(() {});
                 },
                 icon: FaIcon(FontAwesomeIcons.cameraRetro))
           ],
@@ -185,6 +189,9 @@ class _ShowTripPageState extends State<ShowTripPage> {
                 )
               ],
             ),
+            // Show รูป
+            (photo != null) ? Image.file(File(photo!.path)) : Container(),
+
             // แสดงข้อมูลทริปที่ loop
             Expanded(
               child: Container(

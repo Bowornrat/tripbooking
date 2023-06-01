@@ -117,6 +117,7 @@ class _ShowTripPageState extends State<ShowTripPage> {
                   final ImagePicker picker = ImagePicker();
                   // Global var photo
                   photo = await picker.pickImage(source: ImageSource.camera);
+
                   setState(() {});
                 },
                 icon: FaIcon(FontAwesomeIcons.cameraRetro))
@@ -190,7 +191,7 @@ class _ShowTripPageState extends State<ShowTripPage> {
               ],
             ),
             // Show รูป
-            (photo != null) ? Image.file(File(photo!.path)) : Container(),
+            (photo != null) ? Image.network(photo!.path) : Container(),
 
             // แสดงข้อมูลทริปที่ loop
             Expanded(

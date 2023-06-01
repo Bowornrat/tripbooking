@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -175,7 +176,19 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       Get.to(() => MapPage());
                     },
-                    child: Text('แผนที่')))
+                    child: Text('แผนที่'))),
+            Center(
+                child: ElevatedButton(
+                    onPressed: () async {
+                      DateTime? newDateTime = await showRoundedDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(DateTime.now().year - 1),
+                        lastDate: DateTime(DateTime.now().year + 1),
+                        borderRadius: 16,
+                      );
+                    },
+                    child: Text('ปฎิทิน'))),
           ],
         ),
       ),

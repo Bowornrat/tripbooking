@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import 'package:tripbooking/config.dart';
@@ -106,6 +108,15 @@ class _ShowTripPageState extends State<ShowTripPage> {
         ),
         appBar: AppBar(
           title: const Text('รายการทริป'),
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  final ImagePicker picker = ImagePicker();
+                  var photot =
+                      await picker.pickImage(source: ImageSource.camera);
+                },
+                icon: FaIcon(FontAwesomeIcons.cameraRetro))
+          ],
         ),
         body: Column(
           children: [

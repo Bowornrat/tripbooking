@@ -68,7 +68,6 @@ class _ShowTripPageState extends State<ShowTripPage> {
                   : Image.network(
                       context.read<AppData>().customer.records[0].image),
               Text(context.read<AppData>().customer.records[0].fullname),
-
               Text(context.read<AppData>().customer.records[0].phone),
 
               const Row(

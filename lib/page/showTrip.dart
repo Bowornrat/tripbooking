@@ -62,13 +62,13 @@ class _ShowTripPageState extends State<ShowTripPage> {
         drawer: Drawer(
           child: Column(
             children: [
-              // ดึงข้อมูลจาก Storage มาใช้
-              (gs.read('image').toString().isEmpty)
-                  ? Image.asset('assets/images/logo.jpg')
-                  : Image.network(gs.read('image')),
-              Text(gs.read('fullname')),
-
               // ดึงข้อมูลจาก Provider มาใช้
+              (context.read<AppData>().customer.records[0].image.isEmpty)
+                  ? Image.asset('assets/images/logo.jpg')
+                  : Image.network(
+                      context.read<AppData>().customer.records[0].image),
+              Text(context.read<AppData>().customer.records[0].fullname),
+
               Text(context.read<AppData>().customer.records[0].phone),
 
               const Row(

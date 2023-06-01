@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   // Attribute or Property
   // Global variable
   String myText1 = '';
-  String phone = '';
+  String phone = '081739999';
   var passwordCtl = TextEditingController();
   // TextEditingController passwordCtl = TextEditingController();
 

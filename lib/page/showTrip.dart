@@ -67,7 +67,8 @@ class _ShowTripPageState extends State<ShowTripPage> {
               ),
               ListTile(
                 onTap: () {
-                  Get.back();
+                  // Get.back();
+                  Navigator.pop(context);
                 },
                 title: Text('รายการทริป'),
               ),

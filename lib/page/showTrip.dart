@@ -3,12 +3,15 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:provider/provider.dart';
 
 import 'package:tripbooking/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:tripbooking/model/trip_get_res.dart';
 import 'package:tripbooking/page/login.dart';
 import 'package:tripbooking/page/tripdetail.dart';
+
+import '../provider/appdata.dart';
 
 class ShowTripPage extends StatefulWidget {
   const ShowTripPage({super.key});
@@ -51,6 +54,7 @@ class _ShowTripPageState extends State<ShowTripPage> {
 
   @override
   Widget build(BuildContext context) {
+    // เข้าถึง Storage
     GetStorage gs = GetStorage();
     return WillPopScope(
       onWillPop: () async => false,
@@ -58,11 +62,15 @@ class _ShowTripPageState extends State<ShowTripPage> {
         drawer: Drawer(
           child: Column(
             children: [
+              // ดึงข้อมูลจาก Storage มาใช้
               (gs.read('image').toString().isEmpty)
                   ? Image.asset('assets/images/logo.jpg')
                   : Image.network(gs.read('image')),
               Text(gs.read('fullname')),
-              Text(gs.read('phone')),
+
+              // ดึงข้อมูลจาก Provider มาใช้
+              Text(context.read<AppData>().customer.records[0].phone),
+
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

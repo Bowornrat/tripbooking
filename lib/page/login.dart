@@ -4,11 +4,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:provider/provider.dart';
 import 'package:tripbooking/config.dart';
 import 'package:tripbooking/model/customer_get_res.dart';
 import 'package:tripbooking/page/register.dart';
 import 'package:tripbooking/page/showTrip.dart';
 import 'package:http/http.dart' as http;
+
+import '../provider/appdata.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -105,10 +108,14 @@ class _LoginPageState extends State<LoginPage> {
                         if (customer.records.length == 1) {
                           // Login correct
 
+                          // เก็บข้อมูลลง Storage
                           GetStorage gs = GetStorage();
                           gs.write('fullname', customer.records[0].fullname);
                           gs.write('phone', customer.records[0].phone);
                           gs.write('image', customer.records[0].image);
+
+                          // เก็บข้อมูล customer ทั้งก้อนลง Provider
+                          context.read<AppData>().customer = customer;
 
                           Navigator.push(
                               context,

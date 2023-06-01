@@ -143,12 +143,11 @@ class _LoginPageState extends State<LoginPage> {
                 /// } else{
                 ///   Text('ลงทะเบียน');
                 /// }
-                child: Text(myText1))
+                child: Text(myText1)),
           ],
         ),
       ),
     );
-    ;
   }
 
   // Method for delay 3 sec and print BBB

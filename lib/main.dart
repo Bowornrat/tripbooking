@@ -14,7 +14,7 @@ import 'package:tripbooking/provider/appdata.dart';
 void main() {
   HttpOverrides.global = MyHttpOverrides();
   Intl.defaultLocale = 'th';
-  // initializeDateFormatting();
+  // initializeDateFormatting(locale, filePath)
 
   // ให้ App เราสามารถเข้าถึง Provider ได้
   runApp(MultiProvider(

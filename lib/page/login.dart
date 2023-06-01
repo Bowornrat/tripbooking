@@ -133,6 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                           Get.snackbar('เกิดข้อผิดพลาด',
                               'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง');
                         }
+                        // await Future.delayed(Duration(seconds: 5));
                         SmartDialog.dismiss();
                       },
                       child: const Text('เข้าสู่ระบบ'))

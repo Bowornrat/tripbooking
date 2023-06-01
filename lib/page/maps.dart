@@ -11,6 +11,9 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('แผนที่'),
+      ),
       body: Container(),
     );
   }

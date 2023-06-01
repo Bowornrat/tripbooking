@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:tripbooking/config.dart';
 import 'package:tripbooking/model/customer_get_res.dart';
 import 'package:tripbooking/page/register.dart';
@@ -102,6 +104,10 @@ class _LoginPageState extends State<LoginPage> {
                         // Else log('Phone or Password incorrect');
                         if (customer.records.length == 1) {
                           // Login correct
+
+                          GetStorage gs = GetStorage();
+                          gs.write('fullname', customer.records[0].fullname);
+                          gs.write('phone', customer.records[0].phone);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -113,6 +119,8 @@ class _LoginPageState extends State<LoginPage> {
                           setState(() {
                             myText1 = 'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง';
                           });
+                          Get.snackbar('เกิดข้อผิดพลาด',
+                              'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง');
                         }
                       },
                       child: const Text('เข้าสู่ระบบ'))

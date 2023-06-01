@@ -52,7 +52,18 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const Padding(
               padding: EdgeInsets.only(left: 50.0),
-              child: Text('หมายเลขโทรศัพท์'),
+              child: Row(
+                children: [
+                  FaIcon(
+                    FontAwesomeIcons.phone,
+                    size: 16,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: Text('หมายเลขโทรศัพท์'),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(left: 50.0, right: 50),

@@ -187,6 +187,9 @@ class _LoginPageState extends State<LoginPage> {
                         lastDate: DateTime(DateTime.now().year + 1),
                         borderRadius: 16,
                       );
+                      if (newDateTime != null) {
+                        log(newDateTime.toString());
+                      }
                     },
                     child: Text('ปฎิทิน'))),
           ],

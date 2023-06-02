@@ -53,7 +53,7 @@ class _EditPageState extends State<EditPage> {
             }
             // ถ้า load เสร็จแล้ว ก็แสดง ข้อมูล
             fullnameCtl.text = customer.records[0].fullname;
-            passwordCtl.text = customer.records[0].phone;
+            phoneCtl.text = customer.records[0].phone;
             emailCtl.text = customer.records[0].email;
             imageCtl.text = customer.records[0].image;
             return SingleChildScrollView(

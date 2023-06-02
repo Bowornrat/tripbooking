@@ -1,4 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:tripbooking/config.dart';
+import 'package:tripbooking/model/customer_post_req.dart';
+import 'package:http/http.dart' as http;
+import 'package:tripbooking/page/login.dart';
 
 class EditPage extends StatefulWidget {
   const EditPage({super.key});
@@ -8,6 +14,12 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPageState extends State<EditPage> {
+  // Global vars
+  var fullnameCtl = TextEditingController();
+  var phoneCtl = TextEditingController();
+  var emailCtl = TextEditingController();
+  var passwordCtl = TextEditingController();
+  var confirmCtl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

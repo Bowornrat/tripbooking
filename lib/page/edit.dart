@@ -1,11 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tripbooking/config.dart';
 import 'package:tripbooking/model/customer_get_res.dart';
 import 'package:tripbooking/model/customer_post_req.dart';
 import 'package:http/http.dart' as http;
 import 'package:tripbooking/page/login.dart';
+import 'package:tripbooking/page/showTrip.dart';
 
 class EditPage extends StatefulWidget {
   // รับข้อมูล idx มาทาง Contructor
@@ -96,6 +98,7 @@ class _EditPageState extends State<EditPage> {
                             var response = await http.put(Uri.parse(url),
                                 body: customerPostRequestToJson(cus));
                             log(response.body);
+                            Get.to(() => ShowTripPage());
                           },
                           child: const Text('บันทึกข้อมูล')),
                     )),

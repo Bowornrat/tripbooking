@@ -82,7 +82,17 @@ class _EditPageState extends State<EditPage> {
                         child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: FilledButton(
-                          onPressed: () async {},
+                          onPressed: () async {
+                            var url = '$apiEndpoint/customer/${widget.idx}';
+                            // เตรียมข้อมูลก่อนส่งไป update
+                            var cus = CustomerPostRequest(
+                                fullname: fullnameCtl.text,
+                                phone: phoneCtl.text,
+                                email: emailCtl.text,
+                                image: imageCtl.text,
+                                password: customer.records[0].password);
+                            // ส่งข้อมูลไป update โดย method PUT
+                          },
                           child: const Text('บันทึกข้อมูล')),
                     )),
                   ],

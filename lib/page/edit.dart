@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:tripbooking/config.dart';
+import 'package:tripbooking/model/customer_get_res.dart';
 import 'package:tripbooking/model/customer_post_req.dart';
 import 'package:http/http.dart' as http;
 import 'package:tripbooking/page/login.dart';
@@ -22,6 +23,16 @@ class _EditPageState extends State<EditPage> {
   var emailCtl = TextEditingController();
   var passwordCtl = TextEditingController();
   var confirmCtl = TextEditingController();
+
+  // ตัวแปรที่เก็บข้อมูล user คนนี้
+  late CustomerGetResponse customer;
+
+  Future<void> loadData() async {
+    var url = '$apiEndpoint/customer/filter=idx,eq,${widget.idx}';
+    var response = await http.get(Uri.parse(url));
+    customer = customerGetResponseFromJson(response.body);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

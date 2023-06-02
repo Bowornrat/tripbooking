@@ -181,12 +181,12 @@ class _LoginPageState extends State<LoginPage> {
                 child: ElevatedButton(
                     onPressed: () async {
                       DateTime? newDateTime = await showRoundedDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(DateTime.now().year - 1),
-                        lastDate: DateTime(DateTime.now().year + 1),
-                        borderRadius: 16,
-                      );
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(DateTime.now().year - 1),
+                          lastDate: DateTime(DateTime.now().year + 1),
+                          borderRadius: 16,
+                          era: EraMode.BUDDHIST_YEAR);
                       if (newDateTime != null) {
                         log(newDateTime.toString());
                       }

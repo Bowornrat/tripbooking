@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:tripbooking/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:tripbooking/model/trip_get_res.dart';
+import 'package:tripbooking/page/edit.dart';
 import 'package:tripbooking/page/login.dart';
 import 'package:tripbooking/page/tripdetail.dart';
 
@@ -74,6 +75,11 @@ class _ShowTripPageState extends State<ShowTripPage> {
                       context.read<AppData>().customer.records[0].image),
               Text(context.read<AppData>().customer.records[0].fullname),
               Text(context.read<AppData>().customer.records[0].phone),
+              FilledButton(
+                  onPressed: () {
+                    Get.to(() => EditPage());
+                  },
+                  child: Text('แก้ไขข้อมูลส่วนตัว')),
 
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,

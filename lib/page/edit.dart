@@ -7,7 +7,9 @@ import 'package:http/http.dart' as http;
 import 'package:tripbooking/page/login.dart';
 
 class EditPage extends StatefulWidget {
-  const EditPage({super.key});
+  // รับข้อมูล idx มาทาง Contructor
+  int idx = 0;
+  EditPage({super.key, required this.idx});
 
   @override
   State<EditPage> createState() => _EditPageState();

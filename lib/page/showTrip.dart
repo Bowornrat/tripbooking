@@ -77,7 +77,9 @@ class _ShowTripPageState extends State<ShowTripPage> {
               Text(context.read<AppData>().customer.records[0].phone),
               FilledButton(
                   onPressed: () {
-                    Get.to(() => EditPage());
+                    // เปิดหน้า Edit พร้อมกับส่งค่า idx ไปด้วย
+                    Get.to(() => EditPage(
+                        idx: context.read<AppData>().customer.records[0].idx));
                   },
                   child: Text('แก้ไขข้อมูลส่วนตัว')),
 

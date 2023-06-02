@@ -92,6 +92,10 @@ class _EditPageState extends State<EditPage> {
                                 image: imageCtl.text,
                                 password: customer.records[0].password);
                             // ส่งข้อมูลไป update โดย method PUT
+                            // PUT จะคล้าย POST ดังนั้นต้องมี body มาด้วย
+                            var response = await http.put(Uri.parse(url),
+                                body: customerPostRequestToJson(cus));
+                            log(response.body);
                           },
                           child: const Text('บันทึกข้อมูล')),
                     )),
